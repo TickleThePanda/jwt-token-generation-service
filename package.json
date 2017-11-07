@@ -1,0 +1,21 @@
+{
+  "name": "token-generation-service",
+  "version": "0.0.1",
+  "description": "Service to generate tokens.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "connect-roles": "^3.1.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-jwt": "^3.0.1",
+    "prompt": "^1.0.0"
+  }
+}
