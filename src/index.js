@@ -2,6 +2,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const cors = require('cors');
+
 //authentication
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
@@ -22,6 +24,27 @@ const PORT = process.env.PORT || 3000;
 const JWT_KEY = process.env.JWT_KEY;
 const USERNAME = process.env.USERNAME;
 const PASSWORD_HASH = process.env.PASSWORD_HASH;
+
+const whitelist = [
+  /https:\/\/ticklethepanda.co.uk/,
+  /https:\/\/ticklethepanda.dev/,
+  /https:\/\/.*ticklethepanda.netlify.com/
+];
+
+const corsOptions = {
+  origin: function(origin, callback) {
+    if (!origin) {
+      callback(null, true);
+    } else if (whitelist.some(r => origin.match(r))) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
