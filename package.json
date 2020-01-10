@@ -6,15 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "TickleThePanda",
   "license": "ISC",
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^3.0.7",
     "connect-roles": "^3.1.2",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "passport": "^0.4.0",
+    "passport": "^0.4.1",
     "passport-http": "^0.3.0",
     "passport-jwt": "^4.0.0",
     "prompt": "^1.0.0"
