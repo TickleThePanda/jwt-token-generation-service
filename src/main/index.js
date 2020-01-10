@@ -26,18 +26,23 @@ const USERNAME = process.env.USERNAME;
 const PASSWORD_HASH = process.env.PASSWORD_HASH;
 
 const whitelist = [
-  /https:\/\/ticklethepanda.co.uk/,
-  /https:\/\/ticklethepanda.dev/,
-  /https:\/\/.*ticklethepanda.netlify.com/
+  /^https:\/\/(\w*\.)?ticklethepanda.co.uk$/,
+  /^https:\/\/(\w*\.)?ticklethepanda.dev$/,
+  /^https:\/\/(\w*\.)?ticklethepanda.netlify.com$/
 ];
 
 const corsOptions = {
   origin: function(origin, callback) {
+    const logPrefix = `cors[${origin}]`;
+    console.log(`${logPrefix}: checking cors validity`);
     if (!origin) {
+      console.log(`${logPrefix}: not a cors request - allowed`);
       callback(null, true);
     } else if (whitelist.some(r => origin.match(r))) {
+      console.log(`${logPrefix}: valid cors origin - allowed`);
       callback(null, true);
     } else {
+      console.log(`${logPrefix}: invalid cors origin - not allowed`);
       callback(new Error('Not allowed by CORS'));
     }
   },
