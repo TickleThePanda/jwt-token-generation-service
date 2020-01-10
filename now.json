@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "jwt-token-generation-service",
+  "alias": [
+    "auth.api.ticklethepanda.co.uk",
+    "auth.api.ticklethepanda.dev"
+  ],
+  "builds": [
+    { "src": "src/main/*.js", "use": "@now/node-server" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "src/main/index.js" }
+  ],
+  "env": {
+    "JWT_KEY": "@jwt-generator-secret",
+    "USERNAME": "@jwt-generator-user",
+    "PASSWORD_HASH": "@jwt-generator-password-hash"
+  }
+}
