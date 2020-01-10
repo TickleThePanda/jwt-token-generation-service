@@ -58,15 +58,23 @@ class User {
 }
 
 passport.use(new BasicStrategy((username, password, done) => {
+    const logPrefix = `Authenticating[${username}]`;
+    console.log(`${logPrefix}: comparing username`);
     if(username === USERNAME) {
+        console.log(`${logPrefix}: username correct`);
+
+        console.log(`${logPrefix}: comparing password`);
         bcrypt.compare(password, PASSWORD_HASH, function(err, res) {
             if(res) {
+                console.log(`${logPrefix}: password is correct`);
                 done(null, new User(username, ['admin']));
             } else {
+                console.log(`${logPrefix}: password is incorrect`)
                 done();
             }
         })
     } else {
+        console.log(`${logPrefix}: username incorrect`);
         done();
     }
 }));
@@ -83,6 +91,7 @@ passport.use(new JwtStrategy(jwtOpts, (token, done) => {
 app.post('/tokens/users',
     passport.authenticate('basic', { session: false }),
     (req, res) => {
+        console.log("Providing token for " + req.user.username);
         let tokenPayload = {
             sub: req.user.username,
             roles: req.user.roles

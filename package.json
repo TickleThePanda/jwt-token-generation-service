@@ -2,9 +2,9 @@
   "name": "token-generation-service",
   "version": "0.0.1",
   "description": "Service to generate tokens.",
-  "main": "src/index.js",
+  "main": "src/main/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha src/test/*.js"
   },
   "author": "TickleThePanda",
   "license": "ISC",
@@ -21,5 +21,12 @@
     "passport-http": "^0.3.0",
     "passport-jwt": "^4.0.0",
     "prompt": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "mocha": "^7.0.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8"
   }
 }
