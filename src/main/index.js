@@ -26,6 +26,7 @@ const USERNAME = process.env.USERNAME;
 const PASSWORD_HASH = process.env.PASSWORD_HASH;
 
 const whitelist = [
+  /^https?:\/\/localhost(:\d*)?$/,
   /^https:\/\/(\w*\.)?ticklethepanda.co.uk$/,
   /^https:\/\/(\w*\.)?ticklethepanda.dev$/,
   /^https:\/\/(\w*\.)?ticklethepanda.netlify.com$/
